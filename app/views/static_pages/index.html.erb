@@ -1,0 +1,23 @@
+<div class="static-pages">
+  <%= form_with url: root_path, method: :get do |form| %>
+    <%= form.label :user_id, "Type flickr user ID here (or pick one from suggestions)" %>
+    <%= form.text_field :user_id, list: "suggestions" %>
+
+    <datalist id="suggestions">
+      <option value="195749060@N07"></option>
+      <option value="ralphdog"></option>
+      <option value="wiwiswot"></option>
+      <option value="151537301@N05"></option>
+    </datalist>
+
+    <%= form.submit "Search" %>
+  <% end %>
+
+  <% if @photos.present? %>
+    <div class="photos">
+      <% @photos.each do |photo| %>
+        <%= image_tag(photo, alt: "flickr photo") %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
